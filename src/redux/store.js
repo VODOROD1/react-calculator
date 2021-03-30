@@ -20,13 +20,14 @@ const initialState1 = {
 }
 
 const storeCreator = (initialState=initialState1,reducers) => {
-    const _state = {...initialState}
+    let _state = {...initialState}
     const _reducers = reducers
     const _subscribers = []
 
     reducers.forEach((reducer) => {
-        let reducerState = reducer(undefined,{type: 'INITIALIZATION'})
-        Object.assign(_state,reducerState)
+        let stateOfReducer = reducer(undefined,{type: 'INITIALIZATION'})
+        let nameOfDirectory = Object.keys(stateOfReducer)[0]
+        _state = {..._state,nameOfDirectory: {...stateOfReducer.nameOfDirectory}}
         // _state = {..._state,...reducerState}
     })
 
@@ -38,7 +39,9 @@ const storeCreator = (initialState=initialState1,reducers) => {
             _subscribers.push(subscriber)
         },
         dispatch(action) {
-
+            _reducers.forEach((reducer) => {
+                _state = reducer(_state,action)
+            })
         }
     }
 }

@@ -1,12 +1,12 @@
 
-const writeOnScoreboardAC = (value) => {
+export const writeOnScoreboardAC = (value) => {
     return {
         type: 'WRITE_ON_SCOREBOARD',
         value
     }
 }
 
-const deleteAC = () => {
+export const deleteAC = () => {
     return {
         type: 'DELETE_FROM_SCOREBOARD'
     }

@@ -18,7 +18,7 @@ const ComplexOperators = (props) => {
     return (
         <div className={styles.wrapper}>
             {
-                store.complexOperators.map((operator) => {
+                store.getState().complexOperators.map((operator) => {
                     return <Operator mean={operator}/>
                 })
             }

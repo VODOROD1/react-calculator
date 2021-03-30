@@ -17,7 +17,7 @@ const state = store.getState()
 export const Context = React.createContext({})
 
 ReactDOM.render(
-    <Context.Provider value={state}>
+    <Context.Provider value={store}>
       <App />
     </Context.Provider>,
   document.getElementById('root')

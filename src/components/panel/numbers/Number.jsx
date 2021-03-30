@@ -5,7 +5,7 @@ const Number = (props) => {
 
     const clickHandler = (e) => {
         e.preventDefault()
-        
+        props.choiseNumber(props.number.value)
     }
 
     return (
