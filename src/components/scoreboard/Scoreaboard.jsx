@@ -17,7 +17,7 @@ const Scoreaboard = (props) => {
                 return (
                     <div className={styles.wrapper}>
                         <div contentEditable={true} className={styles.board}>
-                            { store.currentValue ? store.currentValue : 0 }
+                            { store.getState().scoreboard.currentValue ? store.getState().scoreboard.currentValue : 0 }
                         </div>
                     </div>
                 )

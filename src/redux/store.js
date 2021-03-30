@@ -26,8 +26,8 @@ const storeCreator = (initialState=initialState1,reducers) => {
 
     reducers.forEach((reducer) => {
         let stateOfReducer = reducer(undefined,{type: 'INITIALIZATION'})
-        let nameOfDirectory = Object.keys(stateOfReducer)[0]
-        _state = {..._state,nameOfDirectory: {...stateOfReducer.nameOfDirectory}}
+        let nameOfDirectory = Object.keys(stateOfReducer)[0]    // получаем имя поля объекта возвращаемого из редьюсера
+        _state = {..._state, [nameOfDirectory]: {...stateOfReducer[nameOfDirectory]}}
         // _state = {..._state,...reducerState}
     })
 
@@ -41,6 +41,9 @@ const storeCreator = (initialState=initialState1,reducers) => {
         dispatch(action) {
             _reducers.forEach((reducer) => {
                 _state = reducer(_state,action)
+            })
+            _subscribers.forEach((subscriber) => {
+                subscriber()
             })
         }
     }

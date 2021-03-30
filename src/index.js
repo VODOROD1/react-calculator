@@ -16,13 +16,18 @@ const state = store.getState()
 
 export const Context = React.createContext({})
 
-ReactDOM.render(
+const rerenderEntireTree = () => {
+  ReactDOM.render(
     <Context.Provider value={store}>
       <App />
     </Context.Provider>,
-  document.getElementById('root')
-);
+    document.getElementById('root')
+  )
+}
 
+rerenderEntireTree()
+
+store.subscribe(rerenderEntireTree)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

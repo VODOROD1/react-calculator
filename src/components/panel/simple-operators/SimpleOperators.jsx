@@ -8,7 +8,7 @@ const SimpleOperators = (props) => {
         <Context.Consumer>
             {
                 (store) => {
-                    return store.simpleOperators.map((operator) => {
+                    return store.getState().simpleOperators.map((operator) => {
                         return <Operator mean={operator} />
                     })
                 }
