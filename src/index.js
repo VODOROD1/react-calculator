@@ -8,10 +8,10 @@ import storeCreator from './redux/store'
 const store = storeCreator()
 const state = store.getState()
 
-export const Context = React.createContext()
+export const Context = React.createContext({})
 
 ReactDOM.render(
-    <Context.Provider store={state}>
+    <Context.Provider value={state}>
       <App />
     </Context.Provider>,
   document.getElementById('root')

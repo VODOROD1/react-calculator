@@ -1,8 +1,21 @@
 const initialState1 = {
-    numbers: ['0','1','2','3','4','5','6','7','8','9'],
+    numbers:
+    [
+        {sign:'0', value:0},
+        {sign:'3', value:3},
+        {sign:'2', value:2},
+        {sign:'1', value:1},
+        {sign:'6', value:6},
+        {sign:'5', value:5},
+        {sign:'4', value:4},
+        {sign:'9', value:9},
+        {sign:'8', value:8},
+        {sign:'7', value:7},
+    ],
     simpleOperators: ['/','*','-','+','='],
     complexOperators: ['CE','C','<-'],
-    otherOperators: ['+/-','.']
+    otherOperators: ['+/-','.'],
+    currentValue: 0
 }
 
 const storeCreator = (initialState=initialState1) => {

@@ -1,0 +1,14 @@
+.numberButton {
+    background-color: #fafafa;
+    width: 50px;
+    height: 35px;
+    display: inline-block;
+    border: 1px solid lightgray;
+    box-sizing: border-box;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+    font-size: 10px;
+    font-weight: bold;
+}
+

@@ -1,9 +1,10 @@
 import React from 'react'
+import styles from './Number.module.css'
 
 const Number = (props) => {
     return (
-        <div>
-            {props.number}
+        <div className={styles.numberButton}>
+            {props.number.sign}
         </div>
     )
 }

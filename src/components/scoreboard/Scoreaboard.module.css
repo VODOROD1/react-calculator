@@ -1,0 +1,15 @@
+.wrapper {
+    background-color: lightgreen;
+    height: 70px;
+    text-align: right;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 80px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.board {
+    vertical-align: bottom;
+    
+}
