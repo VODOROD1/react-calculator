@@ -1,7 +1,9 @@
 const initialState1 = {
     numbers:
     [
+        {sign:'.', value:'.'},
         {sign:'0', value:0},
+        {sign:'+/-', value:'+/-'},
         {sign:'3', value:3},
         {sign:'2', value:2},
         {sign:'1', value:1},
@@ -15,13 +17,18 @@ const initialState1 = {
     simpleOperators: ['/','*','-','+','='],
     complexOperators: ['CE','C','<-'],
     otherOperators: ['+/-','.'],
-    currentValue: 0
 }
 
-const storeCreator = (initialState=initialState1) => {
+const storeCreator = (initialState=initialState1,reducers) => {
     const _state = {...initialState}
-    const _reducers = []
+    const _reducers = reducers
     const _subscribers = []
+
+    reducers.forEach((reducer) => {
+        let reducerState = reducer(undefined,{type: 'INITIALIZATION'})
+        Object.assign(_state,reducerState)
+        // _state = {..._state,...reducerState}
+    })
 
     return {
         getState() {

@@ -12,3 +12,10 @@
     font-weight: bold;
 }
 
+.numberButton:hover {
+    background-color: lightgray;
+}
+
+.numberButton:active {
+    background-color: gray;
+}

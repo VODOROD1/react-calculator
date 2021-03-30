@@ -7,9 +7,7 @@ const Scoreaboard = (props) => {
     React.useEffect(() => {
         const LocalContext = Context
         console.log('Scoreaboard')
-
-        const consumer = LocalContext.Consumer
-        
+        const consumer = LocalContext.Consumer  
     },[])
     
     return (

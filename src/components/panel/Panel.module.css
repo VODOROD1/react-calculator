@@ -1,8 +1,16 @@
 .wrapper {
     height: 190px;
+    width: 205px;
+}
+
+.numbers {
     width: 150px;
 }
 
-.cap {
-    background-color: red;
+.simpleOperators {
+    width: 35px;
+}
+
+.wrapper div {
+    display: inline-block;
 }

@@ -4,8 +4,14 @@ import './index.css';
 import App from './App.jsx';
 import reportWebVitals from './reportWebVitals';
 import storeCreator from './redux/store'
+import scoreboardReducer from './redux/reducers/scoreboard-reducer'
+import calculateReducer from './redux/reducers/calculate-reducer'
 
-const store = storeCreator()
+const reducers = []
+reducers.push(scoreboardReducer)
+reducers.push(calculateReducer)
+
+const store = storeCreator(undefined,reducers)
 const state = store.getState()
 
 export const Context = React.createContext({})

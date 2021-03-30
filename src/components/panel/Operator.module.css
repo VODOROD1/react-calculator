@@ -11,3 +11,7 @@
     line-height: 30px;
     font-size: 10px;
 }
+
+.operator:hover {
+    background-color: lightgray;
+}
