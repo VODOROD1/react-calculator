@@ -3,8 +3,8 @@ import styles from './Operator.module.css'
 
 const Operator = (props) => {
     return (
-        <div className={styles.operator}>
-            {props.mean}
+        <div className={styles.operator} onClick={() => props.operatorHandler(props.sign)}>
+            {props.sign}
         </div>
     )
 }

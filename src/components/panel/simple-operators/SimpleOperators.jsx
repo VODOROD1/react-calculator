@@ -9,7 +9,7 @@ const SimpleOperators = (props) => {
             {
                 (store) => {
                     return store.getState().simpleOperators.map((operator) => {
-                        return <Operator mean={operator} />
+                        return <Operator sign={operator} />
                     })
                 }
             }
