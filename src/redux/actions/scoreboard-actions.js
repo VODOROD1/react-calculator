@@ -6,9 +6,10 @@ export const writeOnScoreboardAC = (value) => {
     }
 }
 
-export const deleteAC = () => {
+export const deleteAC = (flag) => {
     return {
-        type: 'DELETE_FROM_SCOREBOARD'
+        type: 'DELETE_FROM_SCOREBOARD',
+        all: flag
     }
 }
 

@@ -10,7 +10,12 @@ const scoreboardReducer = (state=initialState, action) => {
         case 'WRITE_ON_SCOREBOARD':
             return {...state, scoreboard: {...state.scoreboard,currentValue: String(state.scoreboard.currentValue) + action.value}}
         case 'DELETE_FROM_SCOREBOARD':
-            let cuttedStr = state.scoreboard.currentValue.slice(0,-1)
+            let cuttedStr = ''
+            if(action.all) {
+                cuttedStr = ''
+            } else {
+                cuttedStr = state.scoreboard.currentValue.slice(0,-1)
+            }
             return {...state, scoreboard: {...state.scoreboard, currentValue: cuttedStr}}
         default:
             return state

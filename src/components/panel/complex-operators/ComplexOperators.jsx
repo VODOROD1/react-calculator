@@ -10,19 +10,20 @@ const ComplexOperators = (props) => {
 
     const operatorHandler = (sign) => {
         switch(sign) {
-            case 'CE':
+            case 'CE': {
+
                 break;
-            case 'C':
-                let currentStr = store.getState().scoreboard.currentValue
-                for(let i=0; i<currentStr.length-1; i++) {
-                    let action = deleteAC()
-                    store.dispatch(action)
-                }
-                break;
-            case '<-':
-                let action = deleteAC()
+            }
+            case 'C': {
+                let action = deleteAC(true)
                 store.dispatch(action)
                 break;
+            }
+            case '<-': {
+                let action = deleteAC(false)
+                store.dispatch(action)
+                break;
+            }
             default:
                 break;
         }

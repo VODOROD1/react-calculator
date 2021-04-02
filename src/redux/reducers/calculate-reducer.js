@@ -1,6 +1,7 @@
 const initialState = {
     calculate: {
-        operand: null,
+        firstOperand: null,
+        secondOperand: null,
         operator: null,
         result: null
     }
