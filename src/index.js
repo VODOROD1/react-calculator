@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import storeCreator from './redux/store'
 import scoreboardReducer from './redux/reducers/scoreboard-reducer'
 import calculateReducer from './redux/reducers/calculate-reducer'
-import 
+import Provider from './react-redux/Provider'
 
 const reducers = []
 reducers.push(scoreboardReducer)
@@ -15,13 +15,15 @@ reducers.push(calculateReducer)
 const store = storeCreator(undefined,reducers)
 const state = store.getState()
 
-// export const Context = React.createContext({})
+export const Context = React.createContext({})
 
 const rerenderEntireTree = () => {
   ReactDOM.render(
-    <Context.Provider value={store}>
-      <App />
-    </Context.Provider>,
+    <Provider store={store}>
+      <Context.Provider value={store}>
+        <App />
+      </Context.Provider>
+    </Provider>,
     document.getElementById('root')
   )
 }

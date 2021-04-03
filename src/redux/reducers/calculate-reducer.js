@@ -10,7 +10,7 @@ const initialState = {
 const calculateReducer = (state=initialState, action) => {
     switch(action.type) {
         case 'ADD_FIRST_OPERAND':
-            return {...state, calculate: {...state.calculate, firstOperand: action.}
+            return state
         case 'ADD_SECOND_OPERAND':
             return state
         case 'ADD_OPERATOR':
