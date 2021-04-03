@@ -1,13 +1,11 @@
 import React from 'react'
 import styles from './ComplexOperators.module.css'
-import {Context} from '../../../index'
 import Operator from '../Operator'
 import {deleteAC} from '../../../redux/actions/scoreboard-actions'
 import connect from '../../../react-redux/connect'
 
 const ComplexOperators = (props) => {
     console.log('ComplexOperators')
-    const store = React.useContext(Context)
 
     const operatorHandler = (sign) => {
         switch(sign) {
@@ -18,13 +16,11 @@ const ComplexOperators = (props) => {
             case 'C': {
                 let action = deleteAC(true)
                 props.deleteNumber(action)
-                // store.dispatch(action)
                 break;
             }
             case '<-': {
                 let action = deleteAC(false)
                 props.deleteNumber(action)
-                // store.dispatch(action)
                 break;
             }
             default:
@@ -32,13 +28,9 @@ const ComplexOperators = (props) => {
         }
     }
 
-    React.useEffect(() => {
-        const LocalContext = Context
-        console.log('Scoreaboard')
-
-        const consumer = LocalContext.Consumer
-        
-    },[])
+    // React.useEffect(() => {
+    //     console.log('Scoreaboard')
+    // },[])
 
     return (
         <div className={styles.wrapper}>

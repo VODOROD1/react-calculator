@@ -13,16 +13,11 @@ reducers.push(scoreboardReducer)
 reducers.push(calculateReducer)
 
 const store = storeCreator(undefined,reducers)
-const state = store.getState()
-
-export const Context = React.createContext({})
 
 const rerenderEntireTree = () => {
   ReactDOM.render(
     <Provider store={store}>
-      <Context.Provider value={store}>
         <App />
-      </Context.Provider>
     </Provider>,
     document.getElementById('root')
   )
