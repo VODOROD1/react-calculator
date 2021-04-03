@@ -10,7 +10,7 @@ const connect = (mapStateToProps, mapDispatchToProps) => {
             const store = React.useContext(Context) // получаем данные из контекста
 
             const stateToProps = mapStateToProps(store.getState())
-            const dispatchToProps = mapDispatchToProps(store.dispatch)
+            const dispatchToProps = mapDispatchToProps(store.dispatch.bind(store))
 
             return (
                 <WrappedComp {...stateToProps} {...dispatchToProps}/>

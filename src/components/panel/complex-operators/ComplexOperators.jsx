@@ -3,6 +3,7 @@ import styles from './ComplexOperators.module.css'
 import {Context} from '../../../index'
 import Operator from '../Operator'
 import {deleteAC} from '../../../redux/actions/scoreboard-actions'
+import connect from '../../../react-redux/connect'
 
 const ComplexOperators = (props) => {
     console.log('ComplexOperators')
@@ -16,12 +17,14 @@ const ComplexOperators = (props) => {
             }
             case 'C': {
                 let action = deleteAC(true)
-                store.dispatch(action)
+                props.deleteNumber(action)
+                // store.dispatch(action)
                 break;
             }
             case '<-': {
                 let action = deleteAC(false)
-                store.dispatch(action)
+                props.deleteNumber(action)
+                // store.dispatch(action)
                 break;
             }
             default:
@@ -40,7 +43,7 @@ const ComplexOperators = (props) => {
     return (
         <div className={styles.wrapper}>
             {
-                store.getState().complexOperators.map((operator) => {
+                props.complexOperators.map((operator) => {
                     return <Operator sign={operator} operatorHandler={operatorHandler}/>
                 })
             }
@@ -48,4 +51,16 @@ const ComplexOperators = (props) => {
     )   
 }
 
-export default ComplexOperators
+const mapStateToProps = (state) => {
+    return {
+        complexOperators: state.complexOperators
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        deleteNumber: (thunk) => {dispatch(thunk)}
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(ComplexOperators)
