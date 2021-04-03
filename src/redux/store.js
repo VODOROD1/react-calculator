@@ -15,8 +15,7 @@ const initialState1 = {
         {sign:'7', value:7},
     ],
     simpleOperators: ['/','*','-','+','='],
-    complexOperators: ['CE','C','<-'],
-    otherOperators: ['+/-','.'],
+    complexOperators: ['CE','C','<-']
 }
 
 const storeCreator = (initialState=initialState1,reducers) => {
@@ -39,12 +38,16 @@ const storeCreator = (initialState=initialState1,reducers) => {
             _subscribers.push(subscriber)
         },
         dispatch(action) {
-            _reducers.forEach((reducer) => {
-                _state = reducer(_state,action)
-            })
-            _subscribers.forEach((subscriber) => {
-                subscriber()
-            })
+            if(typeof action === 'object') {
+                _reducers.forEach((reducer) => {
+                    _state = reducer(_state,action)
+                })
+                _subscribers.forEach((subscriber) => {
+                    subscriber()
+                })
+            } else {
+                action(this.dispatch)
+            }
         }
     }
 }

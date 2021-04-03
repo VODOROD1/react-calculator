@@ -2,15 +2,15 @@ import React from 'react'
 import styles from './Numbers.module.css'
 import Number from './Number'
 import {Context} from '../../../index'
-import {writeOnScoreboardAC} from '../../../redux/actions/scoreboard-actions'
+import {writeOnScoreboardTC} from '../../../redux/reducers/scoreboard-reducer'
 
 const Numbers = (props) => {
 
     const store = React.useContext(Context)
 
     const choiseNumber = (value) => {
-        let action = writeOnScoreboardAC(value)
-        store.dispatch(action)
+        let thunk = writeOnScoreboardTC(store.getState().scoreboard.currentValue,value)
+        store.dispatch(thunk)
     }
 
     const numbers = store.getState().numbers
