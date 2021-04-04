@@ -1,3 +1,6 @@
+import {addOperatorAC} from '../actions/calculate-actions'
+import {toggleIsOperatedAC} from '../actions/scoreboard-actions'
+
 const initialState = {
     calculate: {
         firstOperand: null,
@@ -14,10 +17,42 @@ const calculateReducer = (state=initialState, action) => {
         case 'ADD_SECOND_OPERAND':
             return state
         case 'ADD_OPERATOR':
-            return state
+            return {...state, calculate: {...state.calculate, operator: action.operator}}
         default:
             return state
     }
 }
+
+// THUNK CREATORS
+export const addOperator = (operator) => {
+    return (dispatch) => {
+        let action1 = addOperatorAC(operator)
+        dispatch(action1)
+        let action2 = toggleIsOperatedAC(true)
+        dispatch(action2)
+    }
+}
+
+
+// switch (operator) {
+//     case '/':
+
+//         break;
+//     case '*':
+
+//         break;
+//     case '-':
+
+//         break;
+//     case '+':
+
+//         break;
+//     case '=':
+
+//         break;
+//     default:
+//         break;
+// }
+
 
 export default calculateReducer

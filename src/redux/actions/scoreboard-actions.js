@@ -14,3 +14,10 @@ export const deleteAC = (flag) => {
     }
 }
 
+export const toggleIsOperatedAC = (flag) => {
+    return {
+        type: 'TOGGEL_IS_OPERATED',
+        flag
+    }
+}
+

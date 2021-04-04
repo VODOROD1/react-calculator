@@ -1,19 +1,20 @@
 
-export const addFirstOperand = () => {
+export const addFirstOperandAC = () => {
     return {
         type: 'ADD_FIRST_OPERAND'
     }
 }
 
-export const addSecondOperand = () => {
+export const addSecondOperandAC = () => {
     return {
         type: 'ADD_SECOND_OPERAND'
     }
 }
 
-export const addOperator = () => {
+export const addOperatorAC = (operator) => {
     return {
-        type: 'ADD_OPERATOR'
+        type: 'ADD_OPERATOR',
+        operator
     }
 }
 

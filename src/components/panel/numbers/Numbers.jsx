@@ -7,7 +7,7 @@ import connect from '../../../react-redux/connect'
 const Numbers = (props) => {
 
     const choiseNumber = (value) => {
-        let thunk = writeOnScoreboardTC(props.scoreboard.currentValue,value)
+        let thunk = writeOnScoreboardTC(props.scoreboard.currentValue,value,props.scoreboard.isOperated)
         props.writeNumber(thunk)
     }
 

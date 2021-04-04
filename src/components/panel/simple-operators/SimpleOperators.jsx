@@ -2,19 +2,30 @@ import React from 'react'
 import styles from './SimpleOperators.module.css'
 import Operator from '../Operator'
 import {Context} from '../../../index'
+import connect from '../../../react-redux/connect'
 
 const SimpleOperators = (props) => {
     return (
-        <Context.Consumer>
+        <div>
             {
-                (store) => {
-                    return store.getState().simpleOperators.map((operator) => {
-                        return <Operator sign={operator} />
-                    })
-                }
+                props.simpleOperators.map((operator) => {
+                    return <Operator sign={operator} />
+                })
             }
-        </Context.Consumer>
+        </div>
     )
 }
 
-export default SimpleOperators
+const mapStateToProps = (state) => {
+    return {
+        simpleOperators: state.simpleOperators
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addOperator: (action) => {dispatch(action)}
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(SimpleOperators)
