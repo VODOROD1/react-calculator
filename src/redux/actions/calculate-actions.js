@@ -1,13 +1,7 @@
 
-export const addFirstOperandAC = () => {
+export const addOperandAC = () => {
     return {
-        type: 'ADD_FIRST_OPERAND'
-    }
-}
-
-export const addSecondOperandAC = () => {
-    return {
-        type: 'ADD_SECOND_OPERAND'
+        type: 'ADD_OPERAND'
     }
 }
 
@@ -40,5 +34,11 @@ export const multiAC = () => {
 export const divideAC = () => {
     return {
 
+    }
+}
+
+export const clearCalcAC = () => {
+    return {
+        type: 'CLEAR'
     }
 }

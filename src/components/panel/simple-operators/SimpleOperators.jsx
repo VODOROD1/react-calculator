@@ -3,13 +3,25 @@ import styles from './SimpleOperators.module.css'
 import Operator from '../Operator'
 import {Context} from '../../../index'
 import connect from '../../../react-redux/connect'
+import {addOperatorTC,equalityTC} from '../../../redux/reducers/calculate-reducer'
 
 const SimpleOperators = (props) => {
+
+    const addOperator = (operator) => {
+        if(operator === '=') {
+            let thunk = equalityTC(operator)
+            props.calculate(thunk)
+        } else {
+            const thunk = addOperatorTC(operator)
+            props.addOperator(thunk)
+        }
+    }
+
     return (
         <div>
             {
                 props.simpleOperators.map((operator) => {
-                    return <Operator sign={operator} />
+                    return <Operator sign={operator} operatorHandler={addOperator} />
                 })
             }
         </div>
@@ -24,7 +36,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addOperator: (action) => {dispatch(action)}
+        addOperator: (action) => {dispatch(action)},
+        calculate: (action) => {dispatch(action)}
     }
 }
 

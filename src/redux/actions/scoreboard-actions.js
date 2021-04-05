@@ -21,3 +21,15 @@ export const toggleIsOperatedAC = (flag) => {
     }
 }
 
+export const clearScoreboardAC = () => {
+    return {
+        type: 'CLEAR'
+    }
+}
+
+export const setResultAC = () => {
+    return {
+        type: 'SET_RESULT'
+    }
+}
+

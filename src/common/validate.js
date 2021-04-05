@@ -7,3 +7,7 @@ export const firstNullDeleteValidate = (scoreboardValue, inputValue) => {
     }
 }
 
+
+export const convertStrToNumber = () => {
+    
+}

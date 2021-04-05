@@ -1,5 +1,5 @@
 import {firstNullDeleteValidate} from '../../common/validate'
-import {writeOnScoreboardAC,deleteAC,toggleIsOperatedAC} from '../actions/scoreboard-actions'
+import {writeOnScoreboardAC,deleteAC,toggleIsOperatedAC,clearAC} from '../actions/scoreboard-actions'
 
 
 const initialState = {
@@ -24,6 +24,13 @@ const scoreboardReducer = (state=initialState, action) => {
             return {...state, scoreboard: {...state.scoreboard, currentValue: cuttedStr}}
         case 'TOGGEL_IS_OPERATED':
             return {...state, scoreboard: {...state.scoreboard, isOperated: action.flag}}
+        case 'CLEAR': {
+            // Обнуляем этот стэйт
+            return {...state, scoreboard: {...state.scoreboard, currentValue: '0', isOperated: false}}
+        }
+        case 'SET_RESULT': {
+            return {...state, scoreboard: {...state.scoreboard, result: state.calculate.result}}
+        }
         default:
             return state
     }
@@ -45,10 +52,14 @@ export const writeOnScoreboardTC = (currentValue,value,isOperated) => {
             }
         } else {
             if(isOperated) {
-
+                let action1 = deleteAC(true)   // удаляем все
+                dispatch(action1)
+                let action2 = writeOnScoreboardAC(value)
+                dispatch(action2)
+            } else {
+                let action = writeOnScoreboardAC(value)
+                dispatch(action)
             }
-            let action = writeOnScoreboardAC(value)
-            dispatch(action)
         }
     }
 }
