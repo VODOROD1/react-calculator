@@ -4,12 +4,20 @@
     text-align: right;
     font-weight: bold;
     font-size: 20px;
-    line-height: 80px;
+    /* line-height: 80px; */
     box-sizing: border-box;
+}
+
+.operators {
+    height: 30px;
     padding: 10px;
+    font-size: 12px;
+    box-sizing: border-box;
 }
 
 .board {
     vertical-align: bottom;
-    
+    height: 40px;
+    padding: 10px;
+    box-sizing: border-box;
 }

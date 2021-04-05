@@ -3,6 +3,7 @@ import styles from './SimpleOperators.module.css'
 import Operator from '../Operator'
 import connect from '../../../react-redux/connect'
 import {addOperatorTC,equalityTC} from '../../../redux/actions/calculate-actions'
+import {addOperatorAC,deleteOperatorsAC} from '../../../redux/actions/scoreboard-actions'
 
 const SimpleOperators = (props) => {
 
@@ -36,7 +37,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         addOperator: (action) => {dispatch(action)},
-        calculate: (action) => {dispatch(action)}
+        calculate: (action) => {dispatch(action)},
+        addOperator: (action) => {dispatch(action)},
+        deleteOperators: (action) => {dispatch(action)}
     }
 }
 

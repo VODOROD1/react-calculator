@@ -1,6 +1,6 @@
 import {initialState} from '../actions/scoreboard-actions'
 
-const scoreboardReducer = (state=initialState, action) => {
+export const scoreboardReducer = (state=initialState, action) => {
     switch(action.type) {
         case 'WRITE_ON_SCOREBOARD':
             return {...state, scoreboard: {...state.scoreboard,currentValue: String(state.scoreboard.currentValue) + action.value}}
@@ -20,6 +20,12 @@ const scoreboardReducer = (state=initialState, action) => {
         }
         case 'SET_RESULT': {
             return {...state, scoreboard: {...state.scoreboard, currentValue: state.calculate.result}}
+        }
+        case 'ADD_OPERATOR_IN_ARR': {
+            return {...state, scoreboard: {...state.scoreboard, operators: [...state.scoreboard.operators, action.operator]}}
+        }
+        case 'DELETE_OPERATORS': {
+            return {...state, scoreboard: {...state.scoreboard, operators: []}}
         }
         default:
             return state

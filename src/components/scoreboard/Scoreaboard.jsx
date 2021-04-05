@@ -6,6 +6,11 @@ const Scoreaboard = (props) => {
     
     return (
         <div className={styles.wrapper}>
+            <div className={styles.operators}>{
+                props.scoreboard.operators.map((operator) => {
+                    return <span> {operator} </span>
+                })
+            }</div>
             <div contentEditable={true} className={styles.board}>
                 { props.scoreboard.currentValue ? props.scoreboard.currentValue : 0 }
             </div>
@@ -21,7 +26,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        
+
     }
 }
 

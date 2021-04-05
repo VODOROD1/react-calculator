@@ -1,4 +1,4 @@
-import {deleteAC,toggleIsOperatedAC,clearScoreboardAC,setResultAC} from './scoreboard-actions'
+import {deleteAC,toggleIsOperatedAC,clearScoreboardAC,setResultAC,addOperatorInArrAC} from './scoreboard-actions'
 
 export const initialState = {
     calculate: {
@@ -19,31 +19,6 @@ export const addOperatorAC = (operator) => {
     return {
         type: 'ADD_OPERATOR',
         operator
-    }
-}
-
-export const sumAC = () => {
-   return {
-        type: 'SUM'
-   }
-
-}
-
-export const diffAC = () => {
-    return {
-
-    }
-}
-
-export const multiAC = () => {
-    return {
-
-    }
-}
-
-export const divideAC = () => {
-    return {
-
     }
 }
 
@@ -68,14 +43,11 @@ export const calculateAC = () => {
 // THUNK CREATORS
 export const addOperatorTC = (operator) => {
     return (dispatch) => {
-        let action1 = addOperatorAC(operator)
-        dispatch(action1)
-        let action2 = addOperandAC()
-        dispatch(action2)
-        let action3 = deleteAC(true)
-        dispatch(action3)
-        let action4 = toggleIsOperatedAC(true)
-        dispatch(action4)
+        dispatch(addOperatorAC(operator))
+        dispatch(addOperatorInArrAC(operator))
+        dispatch(addOperandAC())
+        dispatch(deleteAC(true))
+        dispatch(toggleIsOperatedAC(true))
     }
 }
 

@@ -23,7 +23,7 @@ const calculate = (operator,operand1,operand2) => {
     }
 }
 
-const calculateReducer = (state=initialState, action) => {
+export const calculateReducer = (state=initialState, action) => {
     switch(action.type) {
         case 'ADD_OPERAND': {
             if(state.calculate.firstOperand) {

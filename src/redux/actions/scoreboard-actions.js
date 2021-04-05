@@ -3,6 +3,7 @@ import {firstNullDeleteValidate} from '../../common/validate'
 export const initialState = {
     scoreboard: {
         currentValue: '0',
+        operators: [],
         isOperated: false,
     }
 }
@@ -37,6 +38,19 @@ export const clearScoreboardAC = () => {
 export const setResultAC = () => {
     return {
         type: 'SET_RESULT'
+    }
+}
+
+export const addOperatorInArrAC = (operator) => {
+    return {
+        type: 'ADD_OPERATOR_IN_ARR',
+        operator
+    }
+}
+
+export const deleteOperatorsFromScoreboardAC = () => {
+    return {
+        type: 'DELETE_OPERATORS'
     }
 }
 
