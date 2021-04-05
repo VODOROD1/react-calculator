@@ -1,14 +1,4 @@
-import {firstNullDeleteValidate} from '../../common/validate'
-import {writeOnScoreboardAC,deleteAC,toggleIsOperatedAC,clearAC} from '../actions/scoreboard-actions'
-
-
-const initialState = {
-    scoreboard: {
-        currentValue: '0',
-        isOperated: false,
-        result: null,
-    }
-}
+import {initialState} from '../actions/scoreboard-actions'
 
 const scoreboardReducer = (state=initialState, action) => {
     switch(action.type) {
@@ -24,43 +14,15 @@ const scoreboardReducer = (state=initialState, action) => {
             return {...state, scoreboard: {...state.scoreboard, currentValue: cuttedStr}}
         case 'TOGGEL_IS_OPERATED':
             return {...state, scoreboard: {...state.scoreboard, isOperated: action.flag}}
-        case 'CLEAR': {
+        case 'CLEAR_SCOREBOARD': {
             // Обнуляем этот стэйт
-            return {...state, scoreboard: {...state.scoreboard, currentValue: '0', isOperated: false}}
+            return {...state, scoreboard: {...state.scoreboard, isOperated: false}}
         }
         case 'SET_RESULT': {
-            return {...state, scoreboard: {...state.scoreboard, result: state.calculate.result}}
+            return {...state, scoreboard: {...state.scoreboard, currentValue: state.calculate.result}}
         }
         default:
             return state
-    }
-}
-
-// THUNK CREATOR
-export const writeOnScoreboardTC = (currentValue,value,isOperated) => {
-    return (dispatch) => {
-        if(currentValue.length === 1) {
-            let flag = firstNullDeleteValidate(currentValue,value) // валидация первого нуля
-            if(flag) {
-                    let action1 = deleteAC(false)   // удаляем первый ноль
-                    dispatch(action1)
-                    let action2 = writeOnScoreboardAC(value)
-                    dispatch(action2)
-            } else {
-                    let action = writeOnScoreboardAC(value)
-                    dispatch(action)
-            }
-        } else {
-            if(isOperated) {
-                let action1 = deleteAC(true)   // удаляем все
-                dispatch(action1)
-                let action2 = writeOnScoreboardAC(value)
-                dispatch(action2)
-            } else {
-                let action = writeOnScoreboardAC(value)
-                dispatch(action)
-            }
-        }
     }
 }
 

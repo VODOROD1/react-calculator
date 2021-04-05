@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Numbers.module.css'
 import Number from './Number'
-import {writeOnScoreboardTC} from '../../../redux/reducers/scoreboard-reducer'
+import {writeOnScoreboardTC} from '../../../redux/actions/scoreboard-actions'
 import connect from '../../../react-redux/connect'
 
 const Numbers = (props) => {

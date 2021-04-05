@@ -1,4 +1,11 @@
+import {firstNullDeleteValidate} from '../../common/validate'
 
+export const initialState = {
+    scoreboard: {
+        currentValue: '0',
+        isOperated: false,
+    }
+}
 
 export const writeOnScoreboardAC = (value) => {
     return {
@@ -23,7 +30,7 @@ export const toggleIsOperatedAC = (flag) => {
 
 export const clearScoreboardAC = () => {
     return {
-        type: 'CLEAR'
+        type: 'CLEAR_SCOREBOARD'
     }
 }
 
@@ -33,3 +40,30 @@ export const setResultAC = () => {
     }
 }
 
+// THUNK CREATOR
+export const writeOnScoreboardTC = (currentValue,value,isOperated) => {
+    return (dispatch) => {
+        if(currentValue.length === 1) {
+            let flag = firstNullDeleteValidate(currentValue,value) // валидация первого нуля
+            if(flag) {
+                    let action1 = deleteAC(false)   // удаляем первый ноль
+                    dispatch(action1)
+                    let action2 = writeOnScoreboardAC(value)
+                    dispatch(action2)
+            } else {
+                    let action = writeOnScoreboardAC(value)
+                    dispatch(action)
+            }
+        } else {
+            if(isOperated) {
+                let action1 = deleteAC(true)   // удаляем все
+                // dispatch(action1)
+                let action2 = writeOnScoreboardAC(value)
+                dispatch(action2)
+            } else {
+                let action = writeOnScoreboardAC(value)
+                dispatch(action)
+            }
+        }
+    }
+}

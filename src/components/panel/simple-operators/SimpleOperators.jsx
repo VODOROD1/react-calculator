@@ -1,9 +1,8 @@
 import React from 'react'
 import styles from './SimpleOperators.module.css'
 import Operator from '../Operator'
-import {Context} from '../../../index'
 import connect from '../../../react-redux/connect'
-import {addOperatorTC,equalityTC} from '../../../redux/reducers/calculate-reducer'
+import {addOperatorTC,equalityTC} from '../../../redux/actions/calculate-actions'
 
 const SimpleOperators = (props) => {
 

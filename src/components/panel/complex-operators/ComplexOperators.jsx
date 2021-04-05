@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './ComplexOperators.module.css'
 import Operator from '../Operator'
 import {deleteAC} from '../../../redux/actions/scoreboard-actions'
+import {clearAllCulcAC} from '../../../redux/actions/calculate-actions'
 import connect from '../../../react-redux/connect'
 
 const ComplexOperators = (props) => {
@@ -14,8 +15,10 @@ const ComplexOperators = (props) => {
                 break;
             }
             case 'C': {
-                let action = deleteAC(true)
-                props.deleteNumber(action)
+                let action1 = deleteAC(true)
+                props.deleteNumber(action1)
+                let action2 = clearAllCulcAC()
+                props.deleteCulc(action2)
                 break;
             }
             case '<-': {
@@ -51,7 +54,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        deleteNumber: (thunk) => {dispatch(thunk)}
+        deleteNumber: (action) => {dispatch(action)},
+        deleteCulc: (action) => {dispatch(action)}
     }
 }
 
